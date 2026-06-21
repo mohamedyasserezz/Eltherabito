@@ -1,0 +1,194 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--pref-surface, white);
+  border-bottom: 1px solid var(--pref-text, #e5e7eb);
+  padding: 1rem 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.scrolled {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--pref-text, #1a1a1a);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logoIcon {
+  color: var(--pref-accent, #1558D6);
+  font-size: 1.2rem;
+}
+
+/* ── Nav links ── */
+.navLinks {
+  display: none;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  gap: 0.25rem;
+  align-items: center;
+}
+.navLink:focus {
+  outline: none;
+}
+
+.navLink:focus-visible {
+  outline: none;
+}
+
+.navLink {
+  background: none;
+  border: none;       
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--pref-text, #6b7280);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  position: relative; 
+
+}
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--pref-accent, #1558D6);
+  border-radius: 2px;
+}
+
+.navLink:hover { color: var(--pref-accent, #1558D6); background: var(--pref-bg, #EFF4FF); }
+
+/* ── Auth buttons ── */
+.authButtons {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btnOutline {
+  padding: 8px 20px;
+  border: 2px solid var(--pref-accent, #1558D6);
+  border-radius: 8px;
+  color: var(--pref-accent, #1558D6);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btnOutline:hover { background: var(--pref-bg, #EFF4FF); }
+
+.btnPrimary {
+  padding: 8px 20px;
+  background: var(--pref-accent, #1558D6);
+  border: 2px solid var(--pref-accent, #1558D6);
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btnPrimary:hover { background: var(--pref-accent, #1248b8); border-color: var(--pref-accent, #1248b8); transform: translateY(-1px); }
+
+/* ── Hamburger ── */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--pref-text, #1a1a1a);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile menu ── */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 1.5rem;
+  border-top: 1px solid var(--pref-text, #e5e7eb);
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobileLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--pref-text, #6b7280);
+  padding: 0.75rem 0;
+  text-align: left;
+  border-bottom: 1px solid var(--pref-text, #f3f4f6);
+  font-family: inherit;
+  transition: color 0.2s;
+}
+.mobileLink:hover { color: var(--pref-accent, #1558D6); }
+
+.mobileAuth {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.mobileLinkActive {
+  color: var(--pref-accent, #1558D6) !important;
+}
+
+.mobileAuth .btnOutline,
+.mobileAuth .btnPrimary { flex: 1; text-align: center; }
+
+/* ── Desktop breakpoint ── */
+@media (min-width: 768px) {
+  .navLinks     { display: flex; }
+  .authButtons  { display: flex; }
+  .hamburger    { display: none; }
+  .mobileMenu   { display: none !important; }
+}

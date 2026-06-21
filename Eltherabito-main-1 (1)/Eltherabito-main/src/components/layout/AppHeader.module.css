@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+.header {
+  background: var(--pref-surface, #fff);
+  border-bottom: 1px solid var(--pref-text, #EAECF0);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: var(--pref-font-family, 'Manrope', sans-serif);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.logoBtn {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.logoTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--pref-text, #1D2939);
+}
+
+.logoSubtitle {
+  font-size: 0.7rem;
+  color: var(--pref-text, #667085);
+  margin: 0;
+}
+
+.logoTextOnly {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pref-accent, #1558D6);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--pref-accent, #1558D6), #3B82F6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.brandName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--pref-text, #1D2939);
+}
+
+.searchBar {
+  flex: 1;
+  position: relative;
+  max-width: 480px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--pref-text, #667085);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--pref-text, #EAECF0);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--pref-bg, #F9FAFB);
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--pref-accent, #1558D6);
+  background: var(--pref-surface, #fff);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--pref-text, #EAECF0);
+  border-radius: 8px;
+  background: var(--pref-surface, #fff);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pref-text, #667085);
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+}
+
+.iconBtn:hover {
+  background: var(--pref-bg, #F9FAFB);
+  color: var(--pref-accent, #1558D6);
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--pref-accent, #1558D6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.userAvatar:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.userAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adminPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid var(--pref-text, #EAECF0);
+  border-radius: 999px;
+  background: var(--pref-bg, #F9FAFB);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pref-text, #344054);
+}
+
+.adminPill img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rightSlot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .searchBar {
+    display: none;
+  }
+
+  .logoSubtitle {
+    display: none;
+  }
+
+  .inner {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+}

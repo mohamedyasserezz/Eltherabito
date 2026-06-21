@@ -1,0 +1,659 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+.page {
+  --primary-color: var(--pref-accent, #2b7cee);
+  --primary-dark: var(--pref-accent, #1e5dd8);
+  --primary-light: var(--pref-bg, #e8f1ff);
+  --primary-ultra-light: var(--pref-bg, #f0f5ff);
+  --text-dark: var(--pref-text, #1e293b);
+  --text-muted: var(--pref-text, #64748b);
+  --text-light: var(--pref-text, #94a3b8);
+  --border-color: var(--pref-text, #e2e8f0);
+  --bg-light: var(--pref-bg, #f6f7f8);
+  --bg-white: var(--pref-surface, #ffffff);
+  --bg-slate-50: var(--pref-bg, #f8fafc);
+  --danger-color: #ef4444;
+  --danger-light: #fee2e2;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px -2px rgba(43, 124, 238, 0.1), 0 4px 6px -1px rgba(43, 124, 238, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--pref-font-family, 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.header {
+  height: 64px;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.logoBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-family: inherit;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: var(--transition);
+}
+
+.iconBtn:hover {
+  background: var(--bg-light);
+  color: var(--primary-color);
+}
+
+.main {
+  flex: 1;
+  padding: 40px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.daysNav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.dayBtn {
+  padding: 8px 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dayBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.dayBtnActive {
+  background: var(--primary-color);
+  color: var(--bg-white);
+  border-color: var(--primary-color);
+}
+
+.scheduleCard {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.scheduleHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.scheduleDayTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.dayToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggleLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+}
+
+.toggleInput {
+  display: none;
+}
+
+.toggleSlider {
+  position: absolute;
+  inset: 0;
+  background: #cbd5e1;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggleSlider::before {
+  content: '';
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 2px;
+  bottom: 2px;
+  background: var(--bg-white);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.toggleInput:checked + .toggleSlider {
+  background: var(--primary-color);
+}
+
+.toggleInput:checked + .toggleSlider::before {
+  transform: translateX(20px);
+}
+
+.slotsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.timeSlot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-slate-50);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.timeSlot:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-ultra-light);
+}
+
+.timeSlotLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slotIcon {
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.timeText {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--danger-light);
+  border: none;
+  border-radius: 6px;
+  color: var(--danger-color);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.deleteBtn:hover {
+  background: var(--danger-color);
+  color: var(--bg-white);
+}
+
+.addSlotBtn {
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.addSlotBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: var(--primary-ultra-light);
+}
+
+.newSlotInput {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--primary-light);
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.timeInputGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.inputIcon {
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.timeInput {
+  width: 40px;
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+  outline: none;
+  font-family: inherit;
+}
+
+.timeInput::placeholder {
+  color: var(--text-light);
+}
+
+.timeSep {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.periodSelector {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.periodBtn {
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.periodBtnActive {
+  background: var(--primary-color);
+  color: var(--bg-white);
+}
+
+.periodBtn:hover:not(.periodBtnActive) {
+  background: var(--bg-light);
+}
+
+.confirmSlotBtn {
+  padding: 10px 24px;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--bg-white);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.confirmSlotBtn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.closeInputBtn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.closeInputBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+.timeInputSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.timeLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.btnCancel {
+  padding: 12px 32px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btnCancel:hover {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.btnSave {
+  padding: 12px 32px;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--bg-white);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.btnSave:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.alertError {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.alertSuccess {
+  background: #d1fae5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    padding: 32px 24px;
+  }
+
+  .scheduleCard {
+    padding: 24px;
+  }
+
+  .pageTitle {
+    font-size: 28px;
+  }
+
+  .header {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .logoBtn {
+    font-size: 16px;
+  }
+
+  .iconBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .main {
+    padding: 24px 16px;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .pageSubtitle {
+    font-size: 13px;
+  }
+
+  .daysNav {
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .dayBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .scheduleCard {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .scheduleHeaderRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dayToggle {
+    align-self: flex-end;
+  }
+
+  .timeSlot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .timeSlotLeft {
+    width: 100%;
+  }
+
+  .deleteBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .inputWrapper {
+    flex-direction: column;
+  }
+
+  .timeInputGroup {
+    width: 100%;
+  }
+
+  .periodSelector {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .confirmSlotBtn {
+    width: 100%;
+  }
+
+  .closeInputBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .footerActions {
+    flex-direction: column-reverse;
+  }
+
+  .btnCancel,
+  .btnSave {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 12px;
+    height: 52px;
+  }
+
+  .logoBtn {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 16px 12px;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  .daysNav {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .dayBtn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 11px;
+  }
+
+  .scheduleCard {
+    padding: 16px;
+  }
+}
